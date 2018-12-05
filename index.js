@@ -18,7 +18,7 @@ server.route({
     handler: function (request, h) {
         const promiseMonCul = new Promise(function (resolve, reject) {
             const wstream = fs.createWriteStream('targets.txt');
-            wstream.write(request.query.method + ' ' + 'http://' + request.query.url);
+            wstream.write(request.query.method + ' ' + request.query.protocol + request.query.url);
             wstream.end(function () {
                 resolve();
             });
