@@ -17,15 +17,17 @@ server.route({
     path: '/attack',
     handler: function (request, h) {
         console.log("Starting receiving request of the gros sac")
+        console.log(request.query);
         const promiseMonCul = new Promise(function (resolve, reject) {
             const wstream = fs.createWriteStream('targets.txt');
-            wstream.write(request.query.method + ' ' + request.query.protocol + request.query.url);
+            wstream.write(request.query.method + ' ' + request.query.protocol + '://' + request.query.url);
             wstream.end(function () {
                 resolve();
             });
         });
 
         return promiseMonCul.then(() => {
+
             return new Promise(function (resolve, reject) {
                 testAttack
                     .targets('targets.txt')

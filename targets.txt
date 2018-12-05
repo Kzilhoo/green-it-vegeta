@@ -1,1 +1,1 @@
-GET http://localhost:3001/hello
+GET https://hublot.io
