@@ -16,6 +16,7 @@ server.route({
     method: 'GET',
     path: '/attack',
     handler: function (request, h) {
+        console.log("Starting receiving request of the gros sac")
         const promiseMonCul = new Promise(function (resolve, reject) {
             const wstream = fs.createWriteStream('targets.txt');
             wstream.write(request.query.method + ' ' + request.query.protocol + request.query.url);
