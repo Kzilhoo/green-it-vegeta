@@ -29,7 +29,7 @@ server.route({
             return new Promise(function (resolve, reject) {
                 testAttack
                     .targets('targets.txt')
-                    .rate(request.query.rate)
+                    .rate(parseFloat(request.query.rate))
                     .duration(request.query.duration + 's')
                     .report()
                     .process()
