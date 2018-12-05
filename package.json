@@ -1,0 +1,29 @@
+{
+  "name": "vegeta",
+  "version": "1.0.0",
+  "description": "vegeta cli application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vegeta",
+    "cli"
+  ],
+  "author": "Adrien Excoffier",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^15.18.0",
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^4.0.0",
+    "figlet": "^1.2.1",
+    "hapi": "^17.8.1",
+    "inquirer": "^6.2.1",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
+    "node-vegeta": "^1.0.3",
+    "touch": "^3.1.0"
+  }
+}
