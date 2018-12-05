@@ -16,9 +16,9 @@ server.route({
     method: 'GET',
     path: '/attack',
     handler: function (request, h) {
-        console.log("Starting receiving request of the gros sac")
+
         console.log(request.query);
-        const promiseMonCul = new Promise(function (resolve, reject) {
+        const promiseMonCul = new Promise((resolve, reject) => {
             const wstream = fs.createWriteStream('targets.txt');
             wstream.write(request.query.method + ' ' + request.query.protocol + '://' + request.query.url);
             wstream.end(function () {
@@ -27,23 +27,20 @@ server.route({
         });
 
         return promiseMonCul.then(() => {
-
-            return new Promise(function (resolve, reject) {
+            return new Promise((resolve, reject) => {
                 testAttack
                     .targets('targets.txt')
                     .rate(parseFloat(request.query.rate))
                     .duration(request.query.duration + 's')
                     .report()
                     .process()
-                    .stdout.on('data', (data) => {
-                        console.log('report', data.toString());
+                    .stdout.on('close', () => {
+                        console.log('report');
                         resolve();
                     })
             }).then(() => {
                 return h.redirect(process.env.REDIRECTION);
             })
-
-
         })
 
     }
